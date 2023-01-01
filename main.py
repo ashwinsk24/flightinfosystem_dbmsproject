@@ -42,11 +42,10 @@ def index():
     return render_template('index.html')
 
 @app.route('/flights')
+@login_required
+
 def flights():
-    if not User.is_authenticated:
-        return render_template('login.html')
-    else:
-        return render_template('flights.html',username=current_user.username)
+    
     return render_template('flights.html')
 
 @app.route('/arrivals')
@@ -84,10 +83,10 @@ def login():
 
         if user and check_password_hash(user.password,password):
             login_user(user)
-            flash("Login Success","primary")
-            return redirect(url_for('flights'))
+            flash("Login Success!","primary")
+            return redirect(url_for('index'))
         else:
-            flash("invalid credentials","danger")
+            flash("Invalid credentials","danger")
             return render_template('login.html')
     return render_template('login.html')
 
@@ -95,6 +94,7 @@ def login():
 @login_required
 def logout():
     logout_user()
+    flash("Logout Successfull","warning")
     return redirect(url_for('login'))
 
 @app.route('/test')
