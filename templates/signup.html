@@ -1,0 +1,66 @@
+{% extends 'base.html' %} 
+{% block title %} 
+Sign up 
+{% endblock title %} 
+
+
+{% block body %}
+<div class="container mt-4">
+
+<div class="row">
+
+  <div class="col-md-4">
+
+  </div>
+  
+  <div class="col-md-4 bg-light p-5 rounded-lg m-3">
+    <h4 class="text-center">Sign up here!</h4>
+    <br>
+    <form action="/signup" method="POST">
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input
+          type="text"
+          class="form-control"
+          id="username"
+          name="username"
+          required
+        />
+        
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="email"
+          name="email"
+          required
+        />
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          name="password"
+          required
+        />
+      </div>
+      <br>
+      <div class="d-grid gap-2">
+        <button class="btn btn-primary" type="submit">Sign up</button>
+      </div>
+      <br>
+    </form>
+      Already a user? <a href="/login">Log in</a>
+  </div>
+  <div class="col-md-4">
+
+  </div>
+</div>
+</div>
+{% endblock body %}
