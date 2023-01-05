@@ -1,19 +1,20 @@
-{% extends 'base.html' %} {% block title %} Departures {% endblock title %} {%
-block body %}
-
+{% extends 'base.html' %} {% block title %} Update Flights {% endblock title %}
+{% block body %}
 <table class="table table-striped">
   <thead class="thead-light">
     <tr>
       <th scope="col">FID</th>
       <th scope="col">Flightno</th>
       <th scope="col">Airline Name</th>
+      <th scope="col">Origin</th>
       <th scope="col">Destination</th>
       <th scope="col">Date</th>
       <th scope="col">SCHD</th>
       <th scope="col">Time</th>
       <th scope="col">Status</th>
       <th scope="col">Terminal</th>
-  
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
     </tr>
   </thead>
   <tbody class="table-group-divider"></tbody>
@@ -23,6 +24,7 @@ block body %}
       <th scope="row">{{post.fid}}</th>
       <td>{{post.flightno}}</td>
       <td>{{post.airline}}</td>
+      <td>{{post.origin}}</td>
       <td>{{post.destination}}</td>
       <td>{{post.date}}</td>
       <td>{{post.schd}}</td>
@@ -30,6 +32,20 @@ block body %}
       <td>{{post.status}}</td>
       <td>{{post.terminal}}</td>
       <td>
+        <a href="/edit/{{post.fid}}"
+          ><button class="btn btn-primary">Edit</button>
+        </a>
+      </td>
+      <td>
+        <a href="/delete/{{post.fid}}"
+          ><button
+            onclick="return confirm('Are you sure to Delete data');"
+            class="btn btn-danger"
+          >
+            Delete
+          </button>
+        </a>
+      </td>
     </tr>
     {% endfor %}
   </tbody>

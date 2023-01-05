@@ -1,64 +1,23 @@
-{% extends 'base.html' %} {% block title %} Flights {% endblock title %} {%
-block body %} {% with messages=get_flashed_messages(with_categories=true) %} {%
-if messages %} {% for category, message in messages %}
+{% extends 'base.html' %} {% block title %} Edit Flight Details {% endblock
+title %} {% block body %}
 
-<div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
-  {{message}}
-  <button
-    type="button"
-    class="btn-close"
-    data-bs-dismiss="alert"
-    aria-label="Close"
-  ></button>
-</div>
+<div class="row">
+  <div class="col-md-4"></div>
 
-{% endfor %} {% endif %} {% endwith %}
+  <div class="col-md-4">
+    <br />
 
-<div class="container mt-4">
-  <div class="row">
-    <div class="col-md-5">
-      <div class="card" style="width: 25rem">
-        <img src="static/images/doc.jpg" class="card-img-top" alt="..." />
-        <div class="card-body">
-          <h5 class="card-title">Flights</h5>
-          <p class="card-text">Airline names</p>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Air India</li>
-          <li class="list-group-item">SpiceJet</li>
-          <li class="list-group-item">Indigo</li>
-          <li class="list-group-item">Vistara</li>
-          <li class="list-group-item">Go Air</li>
-          <li class="list-group-item">Akasa Air</li>
-        </ul>
-        <div class="card-body">
-          <a href="#" class="card-link">Contact </a>
-          <a href="#" class="card-link">About</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-5">
-      <h4 class="text-center bg-light text-black">Add Flights Details</h4>
+    <h4 class="text-center bg-warning text-white">Update Flights Details</h4>
       <br />
-      <form action="/flights" method="post" class="">
-        <div class="form-group">
-          <input
-            type="email"
-            class="form-control"
-            id="email"
-            value="{{current_user.email}}"
-            name="email"
-            required
-          />
-        </div>
-
+      <form action="/edit/{{posts.fid}}" method="post" class="">
+       
         <div class="form-group">
           <input
             type="text"
             class="form-control"
             id="flightno"
             name="flightno"
+            value="{{posts.flightno}}"
             placeholder="FlightNo"
             required
           />
@@ -70,6 +29,7 @@ if messages %} {% for category, message in messages %}
             class="form-control"
             id="airline"
             name="airline"
+            value="{{posts.airline}}"
             placeholder="Airline Name"
             required
           />
@@ -81,7 +41,9 @@ if messages %} {% for category, message in messages %}
             class="form-control"
             id="origin"
             name="origin"
+            value="{{posts.origin}}"
             placeholder="Origin Place"
+            
           />
         </div>
 
@@ -91,7 +53,9 @@ if messages %} {% for category, message in messages %}
             class="form-control"
             id="destination"
             name="destination"
+            value="{{posts.destination}}"
             placeholder="Destination"
+            
           />
         </div>
 
@@ -100,6 +64,7 @@ if messages %} {% for category, message in messages %}
             type="date"
             class="form-control"
             name="date"
+            value="{{posts.date}}"
             placeholder="Date"
             required
           />
@@ -110,6 +75,7 @@ if messages %} {% for category, message in messages %}
             type="time"
             class="form-control"
             name="schd"
+            value="{{posts.schd}}""
             placeholder="Schd time"
             required
           />
@@ -120,13 +86,14 @@ if messages %} {% for category, message in messages %}
             type="time"
             class="form-control"
             name="time"
+            value="{{posts.time}}""
             placeholder="Actual Time"
             required
           />
         </div>
         <div class="form-group">
           <select class="form-control" id="status" name="status" required>
-            <option selected>Select Status</option>
+            <option selected>{{posts.status}}</option>
             <option value="ARRIVED">ARRIVED</option>
             <option value="DEPARTED">DEPARTED</option>
             <option value="SCHEDULED">SCHEDULED</option>
@@ -137,7 +104,7 @@ if messages %} {% for category, message in messages %}
         
         <div class="form-group">
           <select class="form-control" id="terminal" name="terminal" required>
-            <option selected>Select Terminal</option>
+            <option selected>{{posts.terminal}}</option>
             <option value="T1">T1</option>
             <option value="T2">T2</option>
             <option value="T3">T3</option>
@@ -145,11 +112,11 @@ if messages %} {% for category, message in messages %}
         </div>
 
         <div class="d-grid gap-2">
-          <button class="btn btn-primary" type="submit">Add</button>
+          <button class="btn btn-warning" type="submit">Update</button>
         </div>
       </form>
-    </div>
   </div>
+  <div class="col-md-4"></div>
 </div>
 
 {% endblock body %}

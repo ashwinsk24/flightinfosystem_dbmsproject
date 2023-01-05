@@ -43,9 +43,16 @@
 
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="/flights"
-                >Flights</a
+                >Add Flights</a
               >
             </li>
+
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/update"
+                >Update Flights</a
+              >
+            </li>
+
 
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="/arrivals"
@@ -58,6 +65,8 @@
                 >Departures</a
               >
             </li>
+
+           
 
 {% if current_user.is_authenticated %}           
               <li class="nav-item dropdown">
